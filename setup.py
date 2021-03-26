@@ -7,7 +7,7 @@ setuptools.setup(
     name="django-custom-logging",
     author="Seonghyeon Cho",
     author_email="seonghyeoncho96@gmail.com",
-    description="A small example package",
+    description="Django middleware for custom logging",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/sh-cho/django-custom-logging",
