@@ -1,6 +1,5 @@
 import unittest
-
-from mock import Mock
+from unittest.mock import Mock
 
 from . import local_thread
 from custom_logging.middleware import request_info_middleware
