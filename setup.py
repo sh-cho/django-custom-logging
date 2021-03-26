@@ -5,7 +5,6 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="django-custom-logging",
-    version="0.0.1",
     author="Seonghyeon Cho",
     author_email="seonghyeoncho96@gmail.com",
     description="A small example package",
@@ -14,6 +13,7 @@ setuptools.setup(
     url="https://github.com/sh-cho/django-custom-logging",
     project_urls={
         "Bug Tracker": "https://github.com/sh-cho/django-custom-logging/issues",
+        "Source Code": "https://github.com/sh-cho/django-custom-logging",
     },
     classifiers=[
         # see https://pypi.org/classifiers/
