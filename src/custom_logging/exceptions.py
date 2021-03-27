@@ -1,0 +1,2 @@
+class CaptureListValidationException(BaseException):
+    pass

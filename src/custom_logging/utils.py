@@ -18,3 +18,8 @@ def getattrd(obj, name, default=NoDefaultProvided):
         if default != NoDefaultProvided:
             return default
         raise
+
+
+def setattrd(obj, name, val):
+    pre, _, post = name.rpartition(".")
+    return setattr(getattrd(obj, pre, None) if pre else obj, post, val)

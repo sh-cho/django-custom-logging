@@ -15,27 +15,36 @@ Django middleware for custom format logging
 ```sh
 python -m pip install django-custom-logging
 ```
-2. Add middleware to `MIDDLEWARE` in setting file
+
+2. Add adequate middlewares to `MIDDLEWARE` in setting file
 ```python
 MIDDLEWARE = (
     # other middlewares ...
-    "django-custom-logging.middleware.request_info_middleware",
+    "django-custom-logging.middleware.capture_request",
 )
 ```
-3. Add `custom_logging.filters.UserIdFilter` to `LOGGING` in setting file and update formatter, and add filter on handler's filter
+Available Middlewares:
+- capture_request
+- (TBD)
+
+3. Add `custom_logging.filters.CustomFilter` to `LOGGING` in setting file and update formatter, and add filter on handler's filter. You should put placeholder `$DJANGO_CUSTOM_LOGGING` in format string which will be replaced by `CustomFilter`.
 ```python
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "formatters": {
         "verbose": {
-            "format": "{levelname} {asctime} {module} {process:d} {thread:d} [USER_ID:{user_id:d}] {message}",
+            "format": "{levelname} {asctime} {module} {process:d} {thread:d} $DJANGO_CUSTOM_LOGGING {message}",
             "style": "{",
         },
     },
     "filters": {
         "user_id_filter": {
-            "()": "custom_logging.filters.UserIdFilter",
+            "()": "custom_logging.filters.CustomFilter",
+            "capture_list": (
+                # (capture_in, capture_out)
+                ("request.user.id", "user_id"),
+            ),
         },
     },
     "handlers": {

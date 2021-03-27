@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import Mock
 
 from src.custom_logging import local_thread
-from src.custom_logging.middleware import request_info_middleware
+from src.custom_logging.middlewares import capture_request
 
 
 class TestMiddleware(unittest.TestCase):
@@ -11,9 +11,9 @@ class TestMiddleware(unittest.TestCase):
         if getattr(local_thread, "request", None):
             del local_thread.request
 
-    def test_request(self):
+    def test_capture_request(self):
         request = Mock()
-        middleware = request_info_middleware(Mock())
+        middleware = capture_request(Mock())
 
         self.assertIsNone(getattr(local_thread, "request", None))
         middleware(request)
