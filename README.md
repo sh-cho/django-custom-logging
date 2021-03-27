@@ -39,7 +39,7 @@ LOGGING = {
         },
     },
     "filters": {
-        "user_id_filter": {
+        "custom_filter": {
             "()": "custom_logging.filters.CustomFilter",
             "capture_list": (
                 # (capture_in, capture_out)
@@ -52,7 +52,7 @@ LOGGING = {
             "level": "DEBUG",
             "class": "logging.StreamHandler",
             "formatter": "verbose",
-            "filters": ["user_id_filter"],
+            "filters": ["custom_filter"],
         },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
