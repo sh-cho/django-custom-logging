@@ -1,6 +1,7 @@
 # django-custom-logging
 
-[![Release](https://github.com/sh-cho/django-custom-logging/actions/workflows/release.yml/badge.svg)](https://github.com/sh-cho/django-custom-logging/actions/workflows/release.yml)
+[comment]: <> ([![Release]&#40;https://github.com/sh-cho/django-custom-logging/actions/workflows/release.yml/badge.svg&#41;]&#40;https://github.com/sh-cho/django-custom-logging/actions/workflows/release.yml&#41;)
+[![Test](https://github.com/sh-cho/django-custom-logging/actions/workflows/test.yml/badge.svg)](https://github.com/sh-cho/django-custom-logging/actions/workflows/test.yml)
 [![PyPI version](https://badge.fury.io/py/django-custom-logging.svg)](https://pypi.python.org/pypi/django-custom-logging/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-custom-logging)](https://pypi.python.org/pypi/django-custom-logging/)
 [![PyPI - License](https://img.shields.io/pypi/l/django-custom-logging)](https://github.com/sh-cho/django-custom-logging/blob/master/LICENSE)
