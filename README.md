@@ -23,7 +23,7 @@ MIDDLEWARE = (
 )
 ```
 3. Add `custom_logging.filters.UserIdFilter` to `LOGGING` in setting file and update formatter, and add filter on handler's filter
- ```python
+```python
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -47,7 +47,7 @@ LOGGING = {
     },
     "root": {"level": "INFO", "handlers": ["console"]},
 }
- ```
+```
 
 
 ## How to use
