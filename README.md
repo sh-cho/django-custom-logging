@@ -29,7 +29,8 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "verbose": {
-            "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d [USER_ID:%(user_id)d] %(message)s",
+            "format": "{levelname} {asctime} {module} {process:d} {thread:d} [USER_ID:{user_id:d}] {message}",
+            "style": "{",
         },
     },
     "filters": {
