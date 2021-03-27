@@ -75,3 +75,7 @@ class ExampleView(APIView):
 ```
 INFO 2021-03-25 11:33:25,505 views 35052 4748750336 [USER_ID:33] example log
 ```
+
+## Supported versions
+- Python: >=3.6
+- Django: >=3
