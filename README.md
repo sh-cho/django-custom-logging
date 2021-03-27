@@ -21,7 +21,7 @@ MIDDLEWARE = (
     "django-custom-logging.middleware.request_info_middleware",
 )
 ```
-3. Finally, add `custom_logging.filters.UserIdFilter` to `LOGGING` in setting file and update formatter
+3. Add `custom_logging.filters.UserIdFilter` to `LOGGING` in setting file and update formatter, and add filter on handler's filter
  ```python
 LOGGING = {
     "version": 1,
