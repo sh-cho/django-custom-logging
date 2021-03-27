@@ -7,7 +7,7 @@
 
 Django middleware for custom format logging
 
-(Not ready to use yet!)
+⚠️ Currently pre-release version is only supported.
 
 
 ## Installation
