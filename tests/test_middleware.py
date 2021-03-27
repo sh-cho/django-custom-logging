@@ -6,11 +6,12 @@ from src.custom_logging.middleware import request_info_middleware
 
 
 class TestMiddleware(unittest.TestCase):
-    def test_request(self):
+    def setUp(self):
         # clear local_thread
         if getattr(local_thread, "request", None):
             del local_thread.request
 
+    def test_request(self):
         request = Mock()
         middleware = request_info_middleware(Mock())
 
