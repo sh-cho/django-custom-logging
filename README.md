@@ -1,4 +1,7 @@
 # django-custom-logging
+
+[![PyPI version](https://badge.fury.io/py/django-custom-logging.svg)](https://badge.fury.io/py/django-custom-logging)
+
 Django middleware for custom logging
 
 ## Installation
