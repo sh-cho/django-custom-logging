@@ -5,7 +5,7 @@
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-custom-logging)](https://pypi.python.org/pypi/django-custom-logging/)
 [![PyPI - License](https://img.shields.io/pypi/l/django-custom-logging)](https://github.com/sh-cho/django-custom-logging/blob/master/LICENSE)
 
-Django middleware for custom logging
+Django middleware for custom format logging
 
 (Not ready to use yet!)
 
