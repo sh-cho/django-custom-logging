@@ -1,11 +1,33 @@
 name: Release
 
 on:
-  release:
-    types: [created]
+  push:
+    tags:
+      - "v*"
 
 jobs:
+  create-release:
+    runs-on: ubuntu-latest
+
+    outputs:
+      url: ${{ steps.create_release.outputs.upload_url }}
+
+    steps:
+      - name: Draft Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Pre-release ${{ github.ref }}
+          draft: false
+          prerelease: true  # TODO: change it after v1.0.0
+
   deploy:
+    needs:
+      - create-release
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
