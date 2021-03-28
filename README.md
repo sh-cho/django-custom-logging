@@ -60,6 +60,7 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
 }
 ```
+Current version only supports "{" style format.
 
 
 ## How to use
