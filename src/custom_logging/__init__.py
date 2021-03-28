@@ -1,4 +1,4 @@
-__version__ = "0.0.1b5"
+__version__ = "0.0.1b6"
 PLACEHOLDER = "$DJANGO_CUSTOM_LOGGING"
 
 
