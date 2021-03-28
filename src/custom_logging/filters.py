@@ -25,7 +25,7 @@ class CustomFilter(Filter):
         capture_outs = map(lambda x: x[1], capture_list)
         capture_outs_format = reduce(
             lambda x, y: f"{x} {y}",
-            map(lambda x: f"{{{x}}}", capture_outs)
+            map(lambda x: f"[{x.upper()}:{{{x}}}]", capture_outs)
         )
         logger.handlers[0].formatter._fmt = format_str.replace(PLACEHOLDER, capture_outs_format, 1)
 
