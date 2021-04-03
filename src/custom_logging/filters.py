@@ -5,7 +5,6 @@ from . import local_thread
 from .exceptions import CaptureListValidationException
 from .utils import getattrd
 
-
 logger = logging.getLogger(__name__)
 
 
