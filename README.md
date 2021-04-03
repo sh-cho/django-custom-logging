@@ -33,15 +33,18 @@ LOGGING = {
         "verbose": {
             "format": "{levelname} {asctime} {module} {process:d} {thread:d}"
                       " [USER_ID:{user_id}] {message}",
+                                #^^^^^^^^^ - (A)
             "style": "{",
         },
     },
     "filters": {
         "custom_filter": {
+        #^^^^^^^^^^^^^ - (B)
             "()": "custom_logging.filters.CustomFilter",
             "capture_list": (
                 # (capture_in, capture_out)
                 ("request.user.id", "user_id"),
+                                    #^^^^^^^ - (A)
             ),
         },
     },
@@ -51,6 +54,7 @@ LOGGING = {
             "class": "logging.StreamHandler",
             "formatter": "verbose",
             "filters": ["custom_filter"],
+                        #^^^^^^^^^^^^^ - (B)
         },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
