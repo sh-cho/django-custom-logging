@@ -16,21 +16,14 @@ Django middleware for custom format logging
 ```sh
 python -m pip install django-custom-logging
 ```
-
-2. Add adequate middlewares to `MIDDLEWARE` in setting file
+2. Add adequate middlewares to `MIDDLEWARE` in setting file. Current version only supports a middleware that captures `request` into local thread(`threading.local()`)
 ```python
 MIDDLEWARE = (
     # other middlewares ...
     "custom_logging.middlewares.capture_request",
 )
 ```
-Available Middlewares:
-- capture_request
-- (TBD)
-
 3. Add `custom_logging.filters.CustomFilter` to `LOGGING` in setting file and set `capture_list` containing a list of variables to be captured(`capture_in`) and format string to be printed(`capture_out`). Also add filter on handler's filter list.
-
-For example,
 ```python
 LOGGING = {
     "version": 1,
@@ -62,7 +55,7 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
 }
 ```
-Note that you can use any format styles(%, {, $), but should make format arguments with `str` type.
+Note that you can use any format styles(%, {, $), but should make format arguments with `str` type. For example, if you want to capture `request.user.id` as `user_id`, please follow format below.
 ```
 %-style: %(user_id)s
 {-style: {user_id}
@@ -96,6 +89,7 @@ class ExampleView(APIView):
 INFO 2021-03-25 11:33:25,170 credentials 35052 4748750336 [USER_ID:-] Found credentials in shared credentials file: ~/.aws/credentials
 INFO 2021-03-25 11:33:25,505 views 35052 4748750336 [USER_ID:33] example log
 ```
+
 
 ## Supported versions
 - Python: >=3.6
