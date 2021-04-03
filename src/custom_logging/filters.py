@@ -19,6 +19,8 @@ class CustomFilter(Filter):
     def filter(self, record: LogRecord) -> bool:
         for capture_in, capture_out in self.capture_list:
             # FIXME: default value should be differ by its type
-            setattr(record, capture_out, getattrd(local_thread, capture_in, "-"))
+            setattr(
+                record, capture_out, getattrd(local_thread, capture_in, None) or "-"
+            )
 
         return True
