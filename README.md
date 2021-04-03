@@ -21,14 +21,16 @@ python -m pip install django-custom-logging
 ```python
 MIDDLEWARE = (
     # other middlewares ...
-    "django-custom-logging.middleware.capture_request",
+    "custom_logging.middlewares.capture_request",
 )
 ```
 Available Middlewares:
 - capture_request
 - (TBD)
 
-3. Add `custom_logging.filters.CustomFilter` to `LOGGING` in setting file and update formatter, and add filter on handler's filter. You should put placeholder `$DJANGO_CUSTOM_LOGGING` in format string which will be replaced by `CustomFilter`.
+3. Add `custom_logging.filters.CustomFilter` to `LOGGING` in setting file and set `capture_list` containing a list of variables to be captured(`capture_in`) and format string to be printed(`capture_out`). Also add filter on handler's filter list.
+
+For example,
 ```python
 LOGGING = {
     "version": 1,
@@ -36,7 +38,7 @@ LOGGING = {
     "formatters": {
         "verbose": {
             "format": "{levelname} {asctime} {module} {process:d} {thread:d}"
-                      " $DJANGO_CUSTOM_LOGGING {message}",
+                      " [USER_ID:{user_id}] {message}",
             "style": "{",
         },
     },
@@ -60,7 +62,12 @@ LOGGING = {
     "root": {"level": "INFO", "handlers": ["console"]},
 }
 ```
-Current version only supports "{" style format.
+Note that you can use any format styles(%, {, $), but should make format arguments with `str` type.
+```
+%-style: %(user_id)s
+{-style: {user_id}
+$-style: ${user_id}
+```
 
 
 ## How to use
@@ -86,6 +93,7 @@ class ExampleView(APIView):
 ```
 
 ```
+INFO 2021-03-25 11:33:25,170 credentials 35052 4748750336 [USER_ID:-] Found credentials in shared credentials file: ~/.aws/credentials
 INFO 2021-03-25 11:33:25,505 views 35052 4748750336 [USER_ID:33] example log
 ```
 
