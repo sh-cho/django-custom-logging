@@ -9,8 +9,6 @@
 
 Django middleware for custom format logging
 
-⚠️ Currently pre-release version is only supported.
-
 
 ## Installation
 1. Install the package
