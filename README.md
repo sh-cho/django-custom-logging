@@ -5,6 +5,7 @@
 [![PyPI](https://img.shields.io/pypi/v/django-custom-logging)](https://pypi.python.org/pypi/django-custom-logging/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-custom-logging)](https://pypi.python.org/pypi/django-custom-logging/)
 [![PyPI - License](https://img.shields.io/pypi/l/django-custom-logging)](https://github.com/sh-cho/django-custom-logging/blob/master/LICENSE)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Django middleware for custom format logging
 
