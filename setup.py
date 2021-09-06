@@ -18,6 +18,7 @@ setuptools.setup(
     classifiers=[
         # see https://pypi.org/classifiers/
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.0",
         "Programming Language :: Python :: 3.1",
         "Programming Language :: Python :: 3.2",
         "Programming Language :: Python :: 3.3",
@@ -28,6 +29,8 @@ setuptools.setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: Implementation :: PyPy",
+        "Framework :: Django",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
