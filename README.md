@@ -3,6 +3,7 @@
 [comment]: <> ([![Release]&#40;https://github.com/sh-cho/django-custom-logging/actions/workflows/release.yml/badge.svg&#41;]&#40;https://github.com/sh-cho/django-custom-logging/actions/workflows/release.yml&#41;)
 [![Test](https://github.com/sh-cho/django-custom-logging/actions/workflows/test.yml/badge.svg)](https://github.com/sh-cho/django-custom-logging/actions/workflows/test.yml)
 [![PyPI](https://img.shields.io/pypi/v/django-custom-logging)](https://pypi.python.org/pypi/django-custom-logging/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/django-custom-logging)](https://pypi.python.org/pypi/django-custom-logging/)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-custom-logging)](https://pypi.python.org/pypi/django-custom-logging/)
 [![PyPI - License](https://img.shields.io/pypi/l/django-custom-logging)](https://github.com/sh-cho/django-custom-logging/blob/master/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -97,3 +98,7 @@ INFO 2021-03-25 11:33:25,505 views 35052 4748750336 [USER_ID:33] example log
 ## Supported versions
 - Python: >=3.5
 - Django: >=3
+
+
+## Contribution
+
