@@ -1,4 +1,21 @@
-# django-custom-logging
+```
+       __  _                                
+  ____/ / (_)___ _____  ____ _____          
+ / __  / / / __ `/ __ \/ __ `/ __ \         
+/ /_/ / / / /_/ / / / / /_/ / /_/ /         
+\__,_/_/ /\__,_/_/ /_/\__, /\____/          
+    /___/            /____/                 
+      _______  _______/ /_____  ____ ___    
+     / ___/ / / / ___/ __/ __ \/ __ `__ \   
+    / /__/ /_/ (__  ) /_/ /_/ / / / / / /   
+    \___/\__,_/____/\__/\____/_/ /_/ /_/    
+           __                  _            
+          / /___  ____ _____ _(_)___  ____ _
+         / / __ \/ __ `/ __ `/ / __ \/ __ `/
+        / / /_/ / /_/ / /_/ / / / / / /_/ / 
+       /_/\____/\__, /\__, /_/_/ /_/\__, /  
+               /____//____/        /____/   
+```
 
 [comment]: <> ([![Release]&#40;https://github.com/sh-cho/django-custom-logging/actions/workflows/release.yml/badge.svg&#41;]&#40;https://github.com/sh-cho/django-custom-logging/actions/workflows/release.yml&#41;)
 [![Test](https://github.com/sh-cho/django-custom-logging/actions/workflows/test.yml/badge.svg)](https://github.com/sh-cho/django-custom-logging/actions/workflows/test.yml)
@@ -8,7 +25,7 @@
 [![PyPI - License](https://img.shields.io/pypi/l/django-custom-logging)](https://github.com/sh-cho/django-custom-logging/blob/master/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Django middleware for custom format logging
+django middleware for custom format logging
 
 
 ## Installation
