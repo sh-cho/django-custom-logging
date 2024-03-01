@@ -47,7 +47,7 @@ LOGGING = {
     "disable_existing_loggers": False,
     "formatters": {
         "verbose": {
-            "format": "{levelname} {asctime} {module} {process:d} {thread:d}"
+            "format": "{levelname} {asctime} {module} {meta[REMOTE_ADDR]} {meta[CONTENT_LENGTH]} {process:d} {thread:d}"
                       " [USER_ID:{user_id}] {message}",
                                 #^^^^^^^^^ - (A)
             "style": "{",
@@ -61,7 +61,14 @@ LOGGING = {
                 # (capture_in, capture_out)
                 ("request.user.id", "user_id"),
                                     #^^^^^^^ - (A)
+                ("request.META", "meta"),
             ),
+            "default_values" : {
+                "meta": {
+                    "REMOTE_ADDR": "127.0.0.1",
+                    "CONTENT_LENGTH": 0,
+                }
+            },
         },
     },
     "handlers": {
@@ -83,6 +90,9 @@ Note that you can use any format styles(%, {, $), but should make format argumen
 $-style: ${user_id}
 ```
 
+## Default Values
+The best thing is to set default values as a fallback.
+Example the request object is available in our legendary APIs, in case you are scheduling any cronjob inside any API, then for that request is None as a result meta[REMOTE_ADDR] these things will raise error, to handle such errors specify default_values also.
 
 ## How to use
 You can use `logger` just like before. No extra parameter is needed.
