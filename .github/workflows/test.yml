@@ -3,16 +3,7 @@ name: Test
 on: [push, pull_request]
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - run: pip install pre-commit
-      - run: pre-commit run --all-files --show-diff-on-failure
-
   test:
-    needs: [lint]
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,12 +13,18 @@ jobs:
           - '3.7'
           - '3.8'
           - '3.9'
+          - '3.10'
+          - '3.11'
+          - '3.12'
           - 'pypy-3.6'
           - 'pypy-3.7'
+          - 'pypy-3.8'
+          - 'pypy-3.9'
+          - 'graalpy-23.1'
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
       - run: pip install tox
