@@ -4,28 +4,32 @@ on: [push, pull_request]
 
 jobs:
   test:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
-        python:
-          - '3.5'
-          - '3.6'
-          - '3.7'
-          - '3.8'
-          - '3.9'
-          - '3.10'
-          - '3.11'
-          - '3.12'
-          - 'pypy-3.6'
-          - 'pypy-3.7'
-          - 'pypy-3.8'
-          - 'pypy-3.9'
-          - 'graalpy-23.1'
+        # https://raw.githubusercontent.com/actions/python-versions/main/versions-manifest.json
+        versions:
+          - { python: '3.5', os: 'ubuntu-20.04' }
+          - { python: '3.6', os: 'ubuntu-20.04' }
+          - { python: '3.7', os: 'ubuntu-latest' }
+          - { python: '3.8', os: 'ubuntu-latest' }
+          - { python: '3.9', os: 'ubuntu-latest' }
+          - { python: '3.10', os: 'ubuntu-latest' }
+          - { python: '3.11', os: 'ubuntu-latest' }
+          - { python: '3.12', os: 'ubuntu-latest' }
+          # pypy
+          - { python: 'pypy-3.6', os: 'ubuntu-latest' }
+          - { python: 'pypy-3.7', os: 'ubuntu-latest' }
+          - { python: 'pypy-3.8', os: 'ubuntu-latest' }
+          - { python: 'pypy-3.9', os: 'ubuntu-latest' }
+          # etc
+          - { python: 'graalpy-23.1', os: 'ubuntu-latest' }
+
+    runs-on: ${{ matrix.versions.os }}
 
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python }}
+          python-version: ${{ matrix.versions.python }}
       - run: pip install tox
       - run: tox -e py
