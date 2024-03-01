@@ -31,5 +31,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.versions.python }}
-      - run: pip install tox
-      - run: tox -e py
+      - run: pipx install hatch
+      - run: hatch run test

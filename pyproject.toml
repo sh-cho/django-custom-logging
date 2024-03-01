@@ -9,11 +9,13 @@ description = "Django middleware for custom format logging"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.5"
+keywords = ["django", "logging", "middleware"]
 authors = [
     { name = "Seonghyeon Cho", email = "seonghyeoncho96@gmail.com" },
 ]
 classifiers = [
     "Framework :: Django",
+    "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
@@ -27,12 +29,15 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+dependencies = []
 
 [project.urls]
-"Bug Tracker" = "https://github.com/sh-cho/django-custom-logging/issues"
-Homepage = "https://github.com/sh-cho/django-custom-logging"
-"Source Code" = "https://github.com/sh-cho/django-custom-logging"
+Documentation = "https://github.com/sh-cho/django-custom-logging#readme"
+Issues = "https://github.com/sh-cho/django-custom-logging/issues"
+Source = "https://github.com/sh-cho/django-custom-logging"
 
 [tool.hatch.version]
 path = "src/custom_logging/__init__.py"
@@ -49,8 +54,50 @@ exclude = [
 [tool.hatch.build.targets.wheel]
 packages = ["src/custom_logging"]
 
+[tool.hatch.envs.default]
+dependencies = [
+    "coverage[toml]>=6.5",
+    "pytest",
+]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+    "- coverage combine",
+    "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.types]
+dependencies = [
+    "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/hatch_demo tests}"
+
+[tool.coverage.run]
+source_pkgs = ["custom_logging", "tests"]
+branch = true
+
+[tool.coverage.paths]
+custom_logging = ["src/custom_logging"]
+tests = ["tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "no cov",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]
+
 [tool.check-manifest]
-ignore = ["tox.ini", "tests/**", ".editorconfig", "vscode.env", ".vscode/**", ".pre-commit-config.yaml"]
+ignore = ["tests/**", ".editorconfig", "vscode.env", ".vscode/**", ".flake8", ".pre-commit-config.yaml"]
 
 [tool.isort]
 multi_line_output = 3
