@@ -1,6 +1,53 @@
 [build-system]
-requires = ["setuptools>=46.4.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "django-custom-logging"
+dynamic = ["version"]
+description = "Django middleware for custom format logging"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.5"
+authors = [
+    { name = "Seonghyeon Cho", email = "seonghyeoncho96@gmail.com" },
+]
+classifiers = [
+    "Framework :: Django",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+"Bug Tracker" = "https://github.com/sh-cho/django-custom-logging/issues"
+Homepage = "https://github.com/sh-cho/django-custom-logging"
+"Source Code" = "https://github.com/sh-cho/django-custom-logging"
+
+[tool.hatch.version]
+path = "src/custom_logging/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src",
+]
+exclude = [
+    "/.github",
+    "/tests",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/custom_logging"]
 
 [tool.check-manifest]
 ignore = ["tox.ini", "tests/**", ".editorconfig", "vscode.env", ".vscode/**", ".pre-commit-config.yaml"]

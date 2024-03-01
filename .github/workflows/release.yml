@@ -6,43 +6,26 @@ on:
       - "v*"
 
 permissions:
+  id-token: write
   contents: write
 
 jobs:
-  create-release:
-    runs-on: ubuntu-latest
-
-    outputs:
-      url: ${{ steps.create_release.outputs.upload_url }}
-
-    steps:
-      - id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          name: Release ${{ github.ref }}
-          tag_name: ${{ github.ref }}
-          draft: false
-
   release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.12"
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install setuptools wheel twine
+      - name: Install hatch
+        run: pipx install hatch
 
-      - name: Build and publish
-        env:
-          TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
-        run: |
-          python setup.py sdist bdist_wheel
-          twine upload --repository pypi dist/*
+      - name: Build
+        run: hatch build
+
+      - name: Publish release distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
@@ -50,3 +33,4 @@ jobs:
           name: Release ${{ github.ref }}
           tag_name: ${{ github.ref }}
           files: dist/*
+          generate_release_notes: true
