@@ -64,7 +64,6 @@ LOGGING = {
                 ("request.META", "meta"),
             ),
             "default_values" : {
-                "user_id": 21783790,
                 "meta": {
                     "REMOTE_ADDR": "127.0.0.1",
                     "CONTENT_LENGTH": 0,
