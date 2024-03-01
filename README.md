@@ -1,4 +1,6 @@
-# django-custom-logging
+# django-custom-logging <img src="https://github.com/sh-cho/django-custom-logging/assets/11611397/934a41d5-2f95-49a1-9033-294db188cbac" width="250" align="right" alt="django-custom-logging logo">
+
+> django middleware for custom format logging
 
 [![PyPI](https://img.shields.io/pypi/v/django-custom-logging)](https://pypi.python.org/pypi/django-custom-logging/)
 [![PyPI - License](https://img.shields.io/pypi/l/django-custom-logging)](https://github.com/sh-cho/django-custom-logging/blob/master/LICENSE)
@@ -8,8 +10,6 @@
 [![Test](https://github.com/sh-cho/django-custom-logging/actions/workflows/test.yml/badge.svg?branch=develop)](https://github.com/sh-cho/django-custom-logging/actions/workflows/test.yml)
 [![Lint](https://github.com/sh-cho/django-custom-logging/actions/workflows/lint.yml/badge.svg?branch=develop)](https://github.com/sh-cho/django-custom-logging/actions/workflows/lint.yml)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-django middleware for custom format logging
 
 
 ## Installation
