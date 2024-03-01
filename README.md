@@ -33,6 +33,7 @@ django middleware for custom format logging
 ```sh
 python -m pip install django-custom-logging
 ```
+
 2. Add adequate middlewares to `MIDDLEWARE` in setting file. Current version only supports a middleware that captures `request` into local thread(`threading.local()`)
 ```python
 MIDDLEWARE = (
@@ -40,6 +41,7 @@ MIDDLEWARE = (
     "custom_logging.middlewares.capture_request",
 )
 ```
+
 3. Add `custom_logging.filters.CustomFilter` to `LOGGING` in setting file and set `capture_list` containing a list of variables to be captured(`capture_in`) and format string to be printed(`capture_out`). Also add filter on handler's filter list.
 ```python
 LOGGING = {
@@ -90,9 +92,13 @@ Note that you can use any format styles(%, {, $), but should make format argumen
 $-style: ${user_id}
 ```
 
-## Default Values
-The best thing is to set default values as a fallback.
-Example the request object is available in our legendary APIs, in case you are scheduling any cronjob inside any API, then for that request is None as a result meta[REMOTE_ADDR] these things will raise error, to handle such errors specify default_values also.
+### ⚠️ Specifying Default Values
+Default values should be provided if `capture_out` is object and its attribute can be undefined. (ex. `{meta[REMOTE_ADDR]}`)
+
+For example, accessing request variable in filter while using scheduling cronjob(ex. `@shared_task`) can raise error because it is not HTTP request so `request` is not defined.
+
+If `capture_out` is single value(ex. str, int, etc.), default value is not needed. It will be replaced with placeholder `-` if it is not defined.
+
 
 ## How to use
 You can use `logger` just like before. No extra parameter is needed.
@@ -117,8 +123,8 @@ class ExampleView(APIView):
 ```
 
 ```
-INFO 2021-03-25 11:33:25,170 credentials 35052 4748750336 [USER_ID:-] Found credentials in shared credentials file: ~/.aws/credentials
-INFO 2021-03-25 11:33:25,505 views 35052 4748750336 [USER_ID:33] example log
+INFO 2024-03-01 11:33:25,170 credentials 127.0.0.1 0 35052 4748750336 [USER_ID:-] Found credentials in shared credentials file: ~/.aws/credentials
+INFO 2024-03-01 11:33:25,505 views 123.123.123.123 1000 35052 4748750336 [USER_ID:33] example log
 ```
 
 
@@ -126,6 +132,15 @@ INFO 2021-03-25 11:33:25,505 views 35052 4748750336 [USER_ID:33] example log
 - Python: >=3.5
 - Django: >=3
 
+## License
+See [LICENSE](./LICENSE)
+
 
 ## Contribution
 Feel free to open issue or pull request.
+
+### Contributors
+
+<a href="https://github.com/sh-cho/django-custom-logging/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sh-cho/django-custom-logging" />
+</a>
