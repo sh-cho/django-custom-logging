@@ -40,7 +40,7 @@ Issues = "https://github.com/sh-cho/django-custom-logging/issues"
 Source = "https://github.com/sh-cho/django-custom-logging"
 
 [tool.hatch.version]
-path = "src/custom_logging/__init__.py"
+path = "src/custom_logging/__about__.py"
 
 [tool.hatch.build.targets.sdist]
 include = [
